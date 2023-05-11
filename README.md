@@ -7,3 +7,6 @@ Ha esetleg az angular 15 miatt problémába ütközöl akkor ez a megoldás:
 https://github.com/angular/angularfire/issues/3290
 sajnos ez az npm modules beli hiba
 A @angular/fire/compat/firestore/interfaces.d.ts-be kell átírni a típusokat.
+
+
+A repair branchbe feltettem egy zipet mert ide valamiért nem lett feltöltve minden. Az a teljes verzió
