@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "webfejl-9449e": {
+      "hosting": {
+        "webterv": [
+          "webfejl-9449e"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "webfejl-9449e"
+  }
+}
