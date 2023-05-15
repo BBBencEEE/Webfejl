@@ -1,0 +1,18 @@
+
+<table>
+    <tr>
+        <th>Honnan</th>
+        <th>Hova</th>
+        <th>Mikor</th>
+        <th>Szabad helyek</th>
+    </tr>
+    <tr *ngFor="let r of routes" [ngClass]="{low: r.hely < 10}">
+        <td>{{r.honnan}}</td>
+        <td>{{r.hova}}</td>
+        <td>{{r.mikor}}</td>
+        <td [ngStyle]="{color: r.hely < 1 ? 'Red' : ''}">{{r.hely}}</td>
+        <td><button mat-raised-button (click)="onFoglalas(r)">Foglalás</button></td>
+    </tr>
+</table>
+
+

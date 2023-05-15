@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
-import { and } from '@angular/fire/firestore';
-import { FormControl, FormGroup } from '@angular/forms'
 import { Router } from '@angular/router';
+import { FormControl, FormGroup } from '@angular/forms'
 import { AuthService } from 'src/app/shared/services/auth.service';
-import { User } from 'src/app/shared/models/User'
+import { User } from 'src/app/shared/models/User';
 import { UserService } from 'src/app/shared/services/user.service';
 
 @Component({
@@ -23,33 +22,27 @@ export class SignupComponent {
     })
   });
 
+  constructor(private router: Router, private authService: AuthService, private userService: UserService){}
 
-  constructor(private authService: AuthService, private router: Router, private userService: UserService){}
-
-  async signup(){
-    let email = this.signUpForm.get('email')?.value;
-    let password = this.signUpForm.get('password')?.value;
-    if((typeof email === "string") && (typeof password === "string")){
-      //this.authService.signup(email,password);
+  signup(){
+    this.authService.signup(this.signUpForm.get('email')?.value as string,this.signUpForm.get('password')?.value as string).then(cred => {
       const user: User = {
-        id: '1',
+        id: cred.user?.uid as string,
         email: this.signUpForm.get('email')?.value as string,
-        username: this.signUpForm.get('email')?.value?.split('@')[0] as string,
         name: {
           firstname: this.signUpForm.get('name.firstname')?.value as string,
-          lastname: this.signUpForm.get('name.lastname')?.value as string,
+          lastname: this.signUpForm.get('name.lastname')?.value as string
         }
       };
       this.userService.create(user).then(_ => {
-        console.log("user added successfully")
+        console.log('User created successfully');
       }).catch(error => {
         console.error(error);
-      }
-      );
+      });
       this.router.navigateByUrl('/login');
-    }else{
-      console.error("hiba a regisztráció során");
-    }
+    }).catch(error => {
+      console.error(error);
+    });
   }
 
 }

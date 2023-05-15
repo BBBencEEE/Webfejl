@@ -1,7 +1,7 @@
 {
   "hosting": {
-    "target": "webterv",
-    "public": "dist/webterv",
+    "target": "v2",
+    "public": "dist/v2",
     "ignore": [
       "**/.*"
     ],

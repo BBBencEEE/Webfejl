@@ -1,0 +1,17 @@
+
+<form [formGroup]="signUpForm" (ngSubmit)="signup()">
+    <mat-form-field><mat-label for="email">E-mail:</mat-label><input required matInput type="text" formControlName="email"></mat-form-field>
+    <mat-form-field><mat-label for="password">Jelszó:</mat-label><input required matInput type="password" formControlName="password"></mat-form-field>
+    <mat-form-field><mat-label for="password2">Jelszó újra:</mat-label><input required matInput type="password" formControlName="password2"></mat-form-field>
+    <div formGroupName="name">
+        <mat-form-field>
+            <mat-label for="firstname">Keresztnév:</mat-label><input required matInput type="text" formControlName="firstname">
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label for="lastname">Vezetéknév:</mat-label><input required matInput type="text" formControlName="lastname">
+        </mat-form-field>
+    </div>
+    <div>
+        <button mat-raised-button color="primary" type="submit">Regisztráció</button>
+    </div>
+</form>

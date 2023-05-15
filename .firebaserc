@@ -2,7 +2,7 @@
   "targets": {
     "webfejl-9449e": {
       "hosting": {
-        "webterv": [
+        "v2": [
           "webfejl-9449e"
         ]
       }

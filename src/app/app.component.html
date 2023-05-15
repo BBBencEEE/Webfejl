@@ -1,26 +1,30 @@
 <mat-sidenav-container>
-    <mat-sidenav>
-
+    <mat-sidenav #sidenav>
+      <app-menu [loggedInUser]="loggedInUser"></app-menu>
     </mat-sidenav>
     <mat-sidenav-content>
         <mat-toolbar color="primary">
             <div fxHide.gt-xs>
-                <button mat-icon-button>
+                <button mat-icon-button (click)="onToggleSidenav(sidenav)">
                     <mat-icon>menu</mat-icon>
                 </button>
             </div>
-            <div>App</div>
-            <div fxFlex fxLayout fxLayoutAlign="flex-end" fx.Hide.xs>
+            <div>Repülőjegyek</div>
+            <div fxHide.xs fxFlex fxLayout fxLayoutAlign="flex-end">
                 <ul fxLayout fxLayoutGap="10px" class="navigation-items">
-                    <li><a routerLink="/main">Főmenü</a></li>
-                    <li><a routerLink="/login">Bejelentkezés</a></li>
-                    <li><a routerLink="/signup">Regisztráció</a></li>
+                    <li *ngIf="loggedInUser"><a routerLink="/main">Főmenü</a></li>
+                    <li *ngIf="loggedInUser"><a routerLink="/profile">Profil</a></li>
+                    <li *ngIf="loggedInUser"><a routerLink="/admin">Admin</a></li>
+                    <li *ngIf="loggedInUser"><a routerLink="/login" (click)="logout()">Kijelentkezés</a></li>
+                    <li *ngIf="!(loggedInUser)"><a routerLink="/login">Bejelentkezés</a></li>
+                    <li *ngIf="!(loggedInUser)"><a routerLink="/signup">Regisztráció</a></li>
                 </ul>
             </div>
         </mat-toolbar>
         <router-outlet></router-outlet>
     </mat-sidenav-content>
-</mat-sidenav-container>
-
-
-
+  </mat-sidenav-container>
+  
+  
+  
+  

@@ -1,0 +1,27 @@
+
+<form [formGroup]="planeroute" (ngSubmit)="onSubmit()">
+    <mat-form-field><mat-label for="honnan">Honnan:</mat-label><input required matInput type="text" formControlName="honnan"></mat-form-field>
+    <mat-form-field><mat-label for="hova">Hova:</mat-label><input required matInput type="text" formControlName="hova"></mat-form-field>
+    <mat-form-field><mat-label for="mikor">Mikor:</mat-label><input required matInput type="datetime-local" formControlName="mikor"></mat-form-field>
+    <mat-form-field><mat-label for="hely">Hely:</mat-label><input required matInput type="number" formControlName="hely"></mat-form-field>
+    
+    <div>
+        <button mat-raised-button color="primary" type="submit">Hozzáadás</button>
+    </div>
+</form><br><br>
+
+<table>
+    <tr>
+        <th>Honnan</th>
+        <th>Hova</th>
+        <th>Mikor</th>
+        <th>Szabad helyek</th>
+    </tr>
+    <tr *ngFor="let r of routes">
+        <td>{{r.honnan}}</td>
+        <td>{{r.hova}}</td>
+        <td>{{r.mikor}}</td>
+        <td>{{r.hely}}</td>
+        <td><button mat-raised-button (click)="onDelete(r.id)">Delete</button></td>
+    </tr>
+</table>

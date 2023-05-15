@@ -1,0 +1,17 @@
+
+<table>
+    <tr>
+        <th>Honnan</th>
+        <th>Hova</th>
+        <th>Mikor</th>
+        <th>Szabad helyek</th>
+    </tr>
+    <tr *ngFor="let r of myRoutes">
+        <td>{{r.honnan}}</td>
+        <td>{{r.hova}}</td>
+        <td>{{r.mikor}}</td>
+        <td>{{r.hely}}</td>
+        <td><button mat-raised-button (click)="onDelete(r)">Törlés</button></td>
+    </tr>
+</table>
+
